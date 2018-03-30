@@ -1,1 +1,4 @@
-com\codezlabs\Facebook_Backend\AppTest.class
+com\codezlabs\Facebook_backend\AppTest.class
+com\codezlabs\Facebook_backend\BlogTestCases.class
+com\codezlabs\Facebook_backend\UserTestCases.class
+com\codezlabs\Facebook_backend\EventTestCases.class

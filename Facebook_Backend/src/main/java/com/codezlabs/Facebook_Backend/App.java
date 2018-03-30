@@ -1,4 +1,4 @@
-package com.codezlabs.Facebook_Backend;
+package com.codezlabs.Facebook_backend;
 
 /**
  * Hello world!
