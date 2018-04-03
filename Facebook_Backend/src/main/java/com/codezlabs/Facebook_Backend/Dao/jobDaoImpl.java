@@ -63,8 +63,5 @@ public class jobDaoImpl implements JobDao{
 		List<JobsApplied>jobsApplieds=sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 		return jobsApplieds;
 	}
-
-	
-
 	
 }

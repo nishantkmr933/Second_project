@@ -9,17 +9,17 @@ public interface BlogDao {
 	
 	public boolean addBlog(Blog blog);
 	public boolean updateBlog(Blog blog);
-	public boolean deleteBlog(int blogId);
+	public boolean deleteBlog(long blogId);
 
 	public List<Blog> listBlogs(String username);
 	public List<Blog> approveBlog(Blog blog);
 	public List<Blog> rejectBlog(Blog blog);
-	public Blog getBlog(int blogId);
+	public Blog getBlog(long blogId);
 	public List<Blog> listAllBlogs();
 	public boolean incrementLikes(Blog blog);
 	
 	public boolean addBlogComment(BlogComment blogComment);
 	public boolean deleteBlogComment(BlogComment blogComment);
-	public BlogComment getBlogComment(int commentId);
-	public List<BlogComment> listBlogComments(int blogid);
+	public BlogComment getBlogComment(long commentId);
+	public List<BlogComment> listBlogComments(long blogid);
 }

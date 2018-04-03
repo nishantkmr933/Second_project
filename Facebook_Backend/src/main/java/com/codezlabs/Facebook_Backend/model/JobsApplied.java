@@ -9,12 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import com.codezlabs.Facebook_backend.model.Job;
 import com.codezlabs.Facebook_backend.model.JobStatus;
 import com.codezlabs.Facebook_backend.model.User;
 
 @Entity
+@Table(name="s_jobApplied")
 public class JobsApplied {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="jobsApplied_sequence")

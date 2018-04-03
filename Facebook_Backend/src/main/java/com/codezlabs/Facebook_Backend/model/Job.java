@@ -1,5 +1,6 @@
 package com.codezlabs.Facebook_backend.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -48,9 +49,7 @@ public class Job {
 	public Date getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(Date postDate) {
-		this.postDate = postDate;
-	}
+	
 	public JobStatus getStatus() {
 		return status;
 	}

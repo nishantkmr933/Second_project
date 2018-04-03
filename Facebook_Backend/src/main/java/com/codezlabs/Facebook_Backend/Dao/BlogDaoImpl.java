@@ -46,7 +46,7 @@ public class BlogDaoImpl implements BlogDao {
 		}
 	}
 
-	public boolean deleteBlog(int blogId) {
+	public boolean deleteBlog(long blogId) {
 		try {
 			sessionFactory.getCurrentSession().delete(blogId);
 			return true;
@@ -86,7 +86,7 @@ public class BlogDaoImpl implements BlogDao {
 		}
 	}
 
-	public Blog getBlog(int blogId) {		
+	public Blog getBlog(long blogId) {		
 			String hql="form Blog where blogId="+ blogId;
 			Blog blog=null;
 			try {
@@ -104,10 +104,15 @@ public class BlogDaoImpl implements BlogDao {
 	}
 
 	public boolean incrementLikes(Blog blog) {
-		// String hql="from Blog where blogId=?";
-		//sessionFactory.
-		
-		return false;
+		try{
+			int likes=blog.getIncrementLikes();
+			likes++;
+			blog.setIncrementLikes(likes);
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}		
 	}
 
 	public boolean addBlogComment(BlogComment blogComment) {
@@ -128,7 +133,7 @@ public class BlogDaoImpl implements BlogDao {
 		}
 	}
 
-	public BlogComment getBlogComment(int commentId) {
+	public BlogComment getBlogComment(long commentId) {
 		String hql="where BlogComment where blogCommentId"+commentId;
 		BlogComment blogComment=null;
 		try{
@@ -139,10 +144,11 @@ public class BlogDaoImpl implements BlogDao {
 		}
 	}
 
-	public List<BlogComment> listBlogComments(int blogid) {
+	public List<BlogComment> listBlogComments(long blogid) {
 		String hql="from BlogComment where blogCommentId"+blogid;
 		List<BlogComment>blogComment=sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 		return blogComment;
 	}
 
+			
 }

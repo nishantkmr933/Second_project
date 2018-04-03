@@ -38,9 +38,9 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-	public boolean delete(User user) {
+	public boolean delete(String userId) {
 		try{
-			sessionFactory.getCurrentSession().delete(user);
+			sessionFactory.getCurrentSession().delete(getById(userId));
 			return true;
 		}catch(Exception e){
 			return false;

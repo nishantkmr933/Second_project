@@ -15,61 +15,64 @@ import junit.framework.Assert;
 
 public class UserTestCases {
 
-	
-	static AnnotationConfigApplicationContext context;	
-	static UserDao userDao;	
+	static AnnotationConfigApplicationContext context;
+	static UserDao userDao;
 	static User user;
 
 	@BeforeClass
 	public static void init() {
 		context = new AnnotationConfigApplicationContext(AppContextConfig.class);
 		context.scan("com.codezlabs.Facebook_backend");
-		//context.refresh();
+		// context.refresh();
 		userDao = (UserDao) context.getBean("userDao");
-		user=(User) context.getBean("user");
+		user = (User) context.getBean("user");
 	}
 
 	@Ignore
 	@Test
 	public void createTestCase() {
-		user.setUserName("rahul");
+		user.setUserName("yo");
+		user.setEmail("yo@gamil.com");
+		user.setPassword("12345");
 		user.setEnabled(false);
 		user.setOnline(false);
 		userDao.create(user);
 		Assert.assertEquals(user, true);
 	}
-	
+
 	@Ignore
 	@Test
-	public void updateTestCase(){
+	public void updateTestCase() {		
 		user.setUserName("Nishant");
 		user.setEnabled(true);
 		user.setOnline(true);
 		userDao.update(user);
 		Assert.assertEquals(user, true);
 	}
-	
+
 	@Ignore
 	@Test
 	public void deleteTestCase(){
-		user.setUserId();
-		userDao.delete(user);
+		
+		userDao.delete(user.getUserId());
 		Assert.assertEquals(user, true);
 	}
-	
+
 	@Ignore
 	@Test
-	public void getByNameTestCase(){		
+	public void getByNameTestCase() {
 		user.setUserName("Nishant");
-		//userDao.getByName();
+		userDao.getByName(user.getUserName());
 		Assert.assertEquals("user", true);
+		
 	}
-	
+
 	@Ignore
 	@Test
-	public void authenticateTestCase(){
+	public void authenticateTestCase() {
 		user.setUserName("Nishant");
 		user.setPassword("Nishant");
-		//userDao.authenticate();
+		 userDao.authenticate(user.getUserName(),user.getPassword());
+		 Assert.assertEquals(user, true);
 	}
 }

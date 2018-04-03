@@ -39,6 +39,7 @@ public class BlogTestCases {
 		blog.setContents("hi");
 		blog.setIncrementLikes(1);
 		blogDao.addBlog(blog);
+		blog.setDateCreated(new java.util.Date());
 		Assert.assertEquals(blog, true);
 	}
 
@@ -47,6 +48,7 @@ public class BlogTestCases {
 	public void updateBlogTestCase() {
 		blog.setContents("Hello");
 		blog.setIncrementLikes(7);
+		blog.setBlogId(778);
 		blogDao.updateBlog(blog);
 		Assert.assertEquals(blog, true);
 	}
@@ -55,7 +57,7 @@ public class BlogTestCases {
 	@Test
 	public void deleteBlogTestCase() {
 		blog.setBlogId(1);
-		// blogDao.deleteBlog(blogId);
+		blogDao.deleteBlog(blog.getBlogId());
 		Assert.assertEquals(blog, true);
 	}
 
@@ -79,6 +81,7 @@ public class BlogTestCases {
 	@Test
 	public void deleteBlogCommentTestCase(){
 		blogComment.setBlogRemove("Welcome To Java");
+		//blogComment.setBlogCommentId(blogCommentId);
 		blogDao.deleteBlogComment(blogComment);
 	}
 	@Ignore

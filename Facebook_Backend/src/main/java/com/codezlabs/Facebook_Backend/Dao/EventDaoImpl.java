@@ -37,7 +37,7 @@ public class EventDaoImpl implements EventDao {
 		
 	}
 
-	public Event get(long eventId) {
+	public Event getById(long eventId) {
 		String hql="from event where eventId"+eventId;
 		Event event = null;
 		try{

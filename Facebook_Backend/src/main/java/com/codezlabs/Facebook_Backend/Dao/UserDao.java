@@ -7,7 +7,7 @@ import com.codezlabs.Facebook_backend.model.User;
 public interface UserDao {
 	public boolean create(User user);
 	public boolean update(User user);
-	public boolean delete(User user);
+	public boolean delete(String userID);
 
 	public User getById(String userId);
 	public User getByName(String name);
