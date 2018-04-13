@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div ng-show="loggedInUser === ''">
+		<div class="alert alert-danger">
+			<p>
+				You Are Not Logged In! Please <a href="#!/login"
+					class="btn btn-link">Login</a> Create Blog.
+			</p>
+			<p>
+				Not Registered? Register <a href="#!/register" class="btn btn-link">Here</a>
+			</p>
+		</div>
+	</div>
+	<div ng-hide="loggedInUser===''">
+		<div class="container-fluid" data-ng-controller="BlogController as ctrl">
+			<div class="panel panel-primary">
+				<div class="panel-heading text-center">
+					<h2>Add New Blog</h2>
+				</div>
+				<div>
+				<form>
+				<div class="col-sm-12 form-group">
+					<label>Blog Name</label> <input type="text" name="blogName" data-ng-model="ctrl.blog.title" placeHolder="Enter Blog Name"/>
+					
+				</div>
+				
+				<div class="col-sm-12 form-group">
+				<label>Blog Content</label>
+				<textarea rows="" cols="" name="blogContent" placeholder="Enter Blog Content Here ..." data-ng-model="ctrl.blog.contents"></textarea>
+				</div>
+				
+				<button type="submit" class="btn btn-success btn-block" data-ng-click="addBlog()"> Submit </button>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>

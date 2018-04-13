@@ -11,7 +11,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 @Table(name="S_Event")
 public class Event {
 	@Id

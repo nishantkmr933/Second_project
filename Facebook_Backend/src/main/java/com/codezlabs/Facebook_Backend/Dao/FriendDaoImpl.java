@@ -53,8 +53,8 @@ public class FriendDaoImpl implements FriendDao{
 		}
 	}
 
-	public List<Friend> getFriends(String userId) {
-		String hql="from friend where friendId="+userId+"and status='REQ_ACCEPTED'";
+	public List<Friend> getFriends(String friendId) {
+		String hql="from friend where friendId="+friendId+"and status='REQ_ACCEPTED'";
 		try{
 		List<Friend>friend = sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 		return friend;
@@ -63,8 +63,8 @@ public class FriendDaoImpl implements FriendDao{
 		}
 	}
 
-	public List<Friend> getRequest(String userId) {
-		String hql="from friend where friendId="+userId+"and status='REQ_NEW'";
+	public List<Friend> getRequest(String friendId) {
+		String hql="from friend where friendId="+friendId+"and status='REQ_NEW'";
 		try{
 			List<Friend>friend=sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 			return friend;

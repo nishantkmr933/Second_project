@@ -10,13 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.codezlabs.Facebook_backend.model.Event;
 
-@Repository("EventDao")
+@Repository("eventDao")
 @EnableTransactionManagement
 @Transactional
 public class EventDaoImpl implements EventDao {
 	
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	public boolean create(Event event) {
 		try{

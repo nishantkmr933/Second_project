@@ -68,7 +68,7 @@ public class BlogDaoImpl implements BlogDao {
 
 	public List<Blog> approveBlog(Blog blog) {
 		try {
-			String hql = "from Blog where status='BLOG_NEW'";
+			String hql = "from Blog where status='BLOG_APPROVED'";
 			List<Blog> blogs = sessionFactory.getCurrentSession().createQuery(hql).getResultList();
 			return blogs;
 		} catch (Exception e) {
@@ -88,10 +88,9 @@ public class BlogDaoImpl implements BlogDao {
 
 	public Blog getBlog(long blogId) {		
 			String hql="form Blog where blogId="+ blogId;
-			Blog blog=null;
 			try {
-				blog=(Blog)sessionFactory.getCurrentSession().createQuery(hql).getResultList();
-				return blog;
+				List<Blog> blogs=sessionFactory.getCurrentSession().createQuery(hql).getResultList();
+				return (Blog) blogs;
 		} catch (Exception e) {
 			return null;
 		}

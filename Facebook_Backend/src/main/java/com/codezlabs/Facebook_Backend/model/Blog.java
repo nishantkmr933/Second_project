@@ -17,8 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 @Entity
-@Table(name="S_Blog")
+@Component
+@Table(name="s_Blog")
 public class Blog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="blog_sequence")

@@ -14,7 +14,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 @Table(name = "s_Job")
 public class Job {
 	@Id

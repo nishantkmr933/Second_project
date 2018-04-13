@@ -8,19 +8,20 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.codezlabs.Facebook_backend.model.User;
 
 @Repository("userDao")
-
+@EnableTransactionManagement
 @Transactional
 public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public boolean create(User user) {
+	public boolean createUser(User user) {
 		try{
 			sessionFactory.getCurrentSession().saveOrUpdate(user);
 			return true;
@@ -29,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-	public boolean update(User user) {
+	public boolean updateUser(User user) {
 		try{
 			sessionFactory.getCurrentSession().update(user);
 			return true;
@@ -38,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-	public boolean delete(String userId) {
+	public boolean deleteUser(long userId) {
 		try{
 			sessionFactory.getCurrentSession().delete(getById(userId));
 			return true;
@@ -47,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
-	public User getById(String userId) {
+	public User getById(long userId) {
 		String hql="from User where userId"+userId;
 		User user=null;
 		try{
@@ -97,7 +98,7 @@ public class UserDaoImpl implements UserDao {
 		return (user!=null);
 	}
 
-	public boolean setOnline(String userId) {
+	public boolean setOnline(long userId) {
 		String hql="from User set isOnline= true where userId"+userId;
 		int result=sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 		System.out.println(result+"Record updated!!");
@@ -105,7 +106,7 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
-	public boolean setOffline(String userId) {
+	public boolean setOffline(long userId) {
 		String hql="from User set isOnline= true where userId"+userId;
 		int result=sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
 		System.out.println(result+"Record updated!!");

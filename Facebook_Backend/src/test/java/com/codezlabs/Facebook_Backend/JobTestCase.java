@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.codezlabs.Facebook_backend.Dao.JobDao;
+import com.codezlabs.Facebook_backend.config.AppContextConfig;
 import com.codezlabs.Facebook_backend.model.Job;
 import com.codezlabs.Facebook_backend.model.JobStatus;
 import com.codezlabs.Facebook_backend.model.JobsApplied;
@@ -24,9 +25,9 @@ public class JobTestCase {
 	
 	@BeforeClass
 	public static void init(){
-		context=new AnnotationConfigApplicationContext();
-		context.scan("com.codezlabs");
-		context.refresh();
+		context=new AnnotationConfigApplicationContext(AppContextConfig.class);
+		context.scan("com.codezlabs.Facebook_backend");
+		//context.refresh();
 		jobDao=(JobDao) context.getBean("jobDao");
 		job= (Job) context.getBean("job");
 		

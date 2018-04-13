@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.codezlabs.Facebook_backend.Dao.FriendDao;
+import com.codezlabs.Facebook_backend.config.AppContextConfig;
 import com.codezlabs.Facebook_backend.model.Friend;
 import com.codezlabs.Facebook_backend.model.RequestStatus;
 
@@ -23,8 +24,8 @@ public class FriendTestCases {
 
 	@BeforeClass
 	public static void init() {
-		context = new AnnotationConfigApplicationContext();
-		context.scan("com.codezlabs");
+		context = new AnnotationConfigApplicationContext(AppContextConfig.class);
+		context.scan("com.codezlabs.Facebook_backend");
 		// context.refresh();
 		friendDao = (FriendDao) context.getBean("friendDao");
 		friend = (Friend) context.getBean("friend");

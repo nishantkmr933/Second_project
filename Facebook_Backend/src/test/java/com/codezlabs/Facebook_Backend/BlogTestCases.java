@@ -14,13 +14,17 @@ import com.codezlabs.Facebook_backend.Dao.BlogDao;
 import com.codezlabs.Facebook_backend.config.AppContextConfig;
 import com.codezlabs.Facebook_backend.model.Blog;
 import com.codezlabs.Facebook_backend.model.BlogComment;
+import com.codezlabs.Facebook_backend.model.BlogStatus;
 
 import junit.framework.Assert;
 
 public class BlogTestCases {
-
+	
+	@Autowired
 	static BlogDao blogDao;
+	@Autowired
 	static Blog blog;
+	@Autowired
 	static BlogComment blogComment;
 	static AnnotationConfigApplicationContext context;
 
@@ -32,14 +36,15 @@ public class BlogTestCases {
 		blogDao = (BlogDao) context.getBean("blogDao");
 		blog = (Blog) context.getBean("blog");
 	}
-
 	@Ignore
 	@Test
 	public void addBlogTestCase() {
-		blog.setContents("hi");
-		blog.setIncrementLikes(1);
-		blogDao.addBlog(blog);
+		blog.setContents("yo");
+		blog.setIncrementLikes(0);		
+		blog.setStatus(BlogStatus.BLOG_NEW);
+		blog.setTitle("yo");
 		blog.setDateCreated(new java.util.Date());
+		blogDao.addBlog(blog);
 		Assert.assertEquals(blog, true);
 	}
 
@@ -47,8 +52,8 @@ public class BlogTestCases {
 	@Test
 	public void updateBlogTestCase() {
 		blog.setContents("Hello");
-		blog.setIncrementLikes(7);
-		blog.setBlogId(778);
+		blog.setIncrementLikes(2);
+		blog.setBlogId(1);
 		blogDao.updateBlog(blog);
 		Assert.assertEquals(blog, true);
 	}

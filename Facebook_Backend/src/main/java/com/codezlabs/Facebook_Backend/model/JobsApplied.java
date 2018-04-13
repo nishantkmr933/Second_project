@@ -11,11 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.codezlabs.Facebook_backend.model.Job;
 import com.codezlabs.Facebook_backend.model.JobStatus;
 import com.codezlabs.Facebook_backend.model.User;
 
 @Entity
+@Component
 @Table(name="s_jobApplied")
 public class JobsApplied {
 	@Id

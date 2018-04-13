@@ -7,7 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 @Table(name="S_blogComment")
 public class BlogComment {
 	@Id

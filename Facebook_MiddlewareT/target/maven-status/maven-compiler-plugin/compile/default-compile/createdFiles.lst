@@ -1,0 +1,9 @@
+com\codezlabs\controller\JobController.class
+com\codezlabs\controller\EventController.class
+com\codezlabs\controller\BlogController.class
+com\codezlabs\controller\HomeController.class
+com\codezlabs\config\WebInitializer.class
+com\codezlabs\controller\FriendContoller.class
+com\codezlabs\controller\RestControllerD.class
+com\codezlabs\controller\UserController.class
+com\codezlabs\config\AppInitializer.class

@@ -1,0 +1,22 @@
+
+<div class="container-fluid" data-ng-controller="UserController as ctrl">
+<form action="">
+  <h2>Register Form</h2>
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="usrnm" data-ng-model="ctrl.User.userName">
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email" data-ng-model="ctrl.User.email">
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="psw" data-ng-model="ctrl.User.password">
+  </div>
+
+  <button type="submit" class="btn btn-success btn-block" data-ng-click="createUser()">Register</button>
+</form>
+</div>

@@ -10,18 +10,21 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.codezlabs.Facebook_backend.Dao.BlogDao;
-import com.codezlabs.Facebook_backend.Dao.EventDaoImpl;
+
+import com.codezlabs.Facebook_backend.Dao.EventDao;
 import com.codezlabs.Facebook_backend.config.AppContextConfig;
-import com.codezlabs.Facebook_backend.model.Blog;
 import com.codezlabs.Facebook_backend.model.Event;
+import com.codezlabs.Facebook_backend.model.EventStatus;
 
 import junit.framework.Assert;
 
 public class EventTestCases {
 	
-	static EventDaoImpl eventDao;	
+	@Autowired
+	static EventDao eventDao;
+	@Autowired
 	static Event event;	
+	
 	static AnnotationConfigApplicationContext context;
 
 	@BeforeClass
@@ -29,7 +32,7 @@ public class EventTestCases {
 		context = new AnnotationConfigApplicationContext(AppContextConfig.class);
 		context.scan("com.codezlabs.Facebook_backend");
 		//context.refresh();
-		eventDao = (EventDaoImpl) context.getBean("eventDao");
+		eventDao = (EventDao) context.getBean("eventDao");
 		event=(Event)context.getBean("event");
 	}
 	
@@ -38,7 +41,8 @@ public class EventTestCases {
 	public void createTestCase() {
 		event.setTitle("Hello");
 		event.setDescription("Welcome Event");
-		event.setStatus(event.getStatus()); 
+		event.setStatus(EventStatus.EVENT_NEW); 
+		event.setEventDate(new java.util.Date());
 		eventDao.create(event);
 		Assert.assertEquals("Create Event test case", true);
 	}

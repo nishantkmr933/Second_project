@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.codezlabs.Facebook_backend.Dao.UserDao;
@@ -16,7 +17,9 @@ import junit.framework.Assert;
 public class UserTestCases {
 
 	static AnnotationConfigApplicationContext context;
+	@Autowired
 	static UserDao userDao;
+	@Autowired
 	static User user;
 
 	@BeforeClass
@@ -36,7 +39,7 @@ public class UserTestCases {
 		user.setPassword("12345");
 		user.setEnabled(false);
 		user.setOnline(false);
-		userDao.create(user);
+		userDao.createUser(user);
 		Assert.assertEquals(user, true);
 	}
 
@@ -46,7 +49,7 @@ public class UserTestCases {
 		user.setUserName("Nishant");
 		user.setEnabled(true);
 		user.setOnline(true);
-		userDao.update(user);
+		userDao.updateUser(user);
 		Assert.assertEquals(user, true);
 	}
 
@@ -54,7 +57,7 @@ public class UserTestCases {
 	@Test
 	public void deleteTestCase(){
 		
-		userDao.delete(user.getUserId());
+		userDao.deleteUser(user.getUserId());
 		Assert.assertEquals(user, true);
 	}
 

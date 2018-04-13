@@ -8,16 +8,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-@Table(name = "S_user")
+@Table(name = "s_User")
 public class User {
 	@Id
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="user_sequence")
+	@SequenceGenerator(sequenceName="user_sequence", name = "user_sequence")
+	private long userId;
 	private String userName;
 	private String password;
 	private String email;
@@ -26,12 +29,13 @@ public class User {
 	private boolean enabled;
 	private boolean isOnline;
 
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId() {
-		this.userId = UUID.randomUUID().toString().substring(0,10);
+	public long setUserId() {
+		//this.userId = UUID.randomUUID().toString().substring(0,10);
+		return userId;
 	}
 
 	public String getUserName() {
